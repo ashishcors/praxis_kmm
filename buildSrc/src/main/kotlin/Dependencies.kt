@@ -110,6 +110,13 @@ object TestLib {
   const val MOCKITO_CORE = "org.mockito:mockito-core:3.3.3"
 }
 
+object AndroidTestLib {
+  private const val ESPRESSO_VERSION = "3.1.0"
+
+  const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:$ESPRESSO_VERSION"
+  const val ESPRESSO_CONTRIB = "androidx.test.espresso:espresso-contrib:$ESPRESSO_VERSION"
+}
+
 object DebugLib {
   private const val LEAK_CANARY_VERSION = "2.3"
   const val LEAK_CANARY =
