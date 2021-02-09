@@ -1,40 +1,52 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+
 plugins {
-  id(BuildPlugins.ANDROID_LIBRARY_PLUGIN)
-  id(BuildPlugins.KOTLIN_ANDROID_PLUGIN)
+  kotlin("multiplatform")
+  id("com.android.library")
   id(BuildPlugins.KOTLIN_PARCELABLE_PLUGIN)
-  id(BuildPlugins.KOTLIN_KAPT)
+}
+
+kotlin {
+  android()
+  ios {
+    binaries {
+      framework {
+        baseName = "domainn"
+      }
+    }
+  }
+  sourceSets {
+    val commonMain by getting{
+      dependencies{
+        api("dev.icerock.moko:parcelize:0.6.0")
+      }
+    }
+    val androidMain by getting
+    val iosMain by getting
+  }
 }
 
 android {
   compileSdkVersion(ProjectProperties.COMPILE_SDK)
-
   defaultConfig {
     minSdkVersion(ProjectProperties.MIN_SDK)
     targetSdkVersion(ProjectProperties.TARGET_SDK)
-    versionCode = 1
-    versionName = "1.0"
-
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
-
-  buildTypes {
-    getByName("release") {
-      isMinifyEnabled = false
-      proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-    }
-  }
+  sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 }
 
-dependencies {
-
-  implementation(project(":data"))
-
-  /*Kotlin*/
-  api(Lib.Kotlin.KT_STD)
-  api(Lib.Async.COROUTINES)
-
-  /* Dependency Injection */
-  api(Lib.Di.DAGGER)
-  kapt(Lib.Di.DAGGER_PROCESSOR)
-  kapt(Lib.Di.DAGGER_COMPILER)
+val packForXcode by tasks.creating(Sync::class) {
+  group = "build"
+  val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
+  val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
+  val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
+  val framework =
+    kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
+  inputs.property("mode", mode)
+  dependsOn(framework.linkTask)
+  val targetDir = File(buildDir, "xcode-frameworks")
+  from({ framework.outputDirectory })
+  into(targetDir)
 }
+tasks.getByName("build")
+    .dependsOn(packForXcode)

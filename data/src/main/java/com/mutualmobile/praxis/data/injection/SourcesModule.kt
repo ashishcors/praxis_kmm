@@ -18,9 +18,7 @@ object SourcesModule {
   @Singleton
   @JvmStatic
   fun provideJokesNetworkSource(apiService: JokeApiService): IJokesRemoteSource {
-    return JokesRemoteSource(
-        apiService
-    )
+    return JokesRemoteSource(apiService)
   }
 
 }

@@ -1,6 +1,6 @@
 package com.mutualmobile.praxis.data.sources
 
-import com.mutualmobile.praxis.data.SafeResult
+import com.example.domainn.utils.SafeResult
 import com.mutualmobile.praxis.data.remote.JokeApiService
 import com.mutualmobile.praxis.data.remote.model.JokeListResponse
 import com.mutualmobile.praxis.data.remote.safeApiCall

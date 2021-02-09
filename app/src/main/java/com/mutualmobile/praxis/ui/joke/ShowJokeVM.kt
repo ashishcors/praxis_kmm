@@ -1,7 +1,7 @@
 package com.mutualmobile.praxis.ui.joke
 
 import androidx.lifecycle.MutableLiveData
-import com.mutualmobile.praxis.domain.model.Joke
+import com.example.domainn.entity.Joke
 import com.mutualmobile.praxis.ui.base.BaseVM
 import javax.inject.Inject
 

@@ -1,9 +1,9 @@
 package com.mutualmobile.praxis.ui.joke
 
 import android.os.Bundle
+import com.example.domainn.entity.Joke
 import com.mutualmobile.praxis.R
 import com.mutualmobile.praxis.databinding.ActivityShowjokeBinding
-import com.mutualmobile.praxis.domain.model.Joke
 import com.mutualmobile.praxis.ui.base.ActivityNavigator
 import com.mutualmobile.praxis.ui.base.BaseActivity
 
@@ -35,7 +35,9 @@ class ShowJokeActivity : BaseActivity<ActivityShowjokeBinding, ShowJokeVM>() {
   }
 
   override fun onBackPressed() {
-    ActivityNavigator.finishActivityWithAnimation(R.anim.slide_right_in, R.anim.slide_right_out, this)
+    ActivityNavigator.finishActivityWithAnimation(
+        R.anim.slide_right_in, R.anim.slide_right_out, this
+    )
   }
 
 }

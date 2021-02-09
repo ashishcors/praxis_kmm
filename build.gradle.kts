@@ -22,6 +22,7 @@ allprojects {
     google()
     jcenter()
     mavenCentral()
+    maven("https://dl.bintray.com/icerockdev/moko")
   }
 }
 

@@ -4,11 +4,11 @@ import android.content.Context
 import com.mutualmobile.praxis.BaseApplication
 import com.mutualmobile.praxis.data.injection.RepositoryModule
 import com.mutualmobile.praxis.data.injection.SourcesModule
-import com.mutualmobile.praxis.domain.injection.UseCaseModule
 import com.mutualmobile.praxis.injection.module.ActivityBindingModule
 import com.mutualmobile.praxis.injection.module.AppModule
 import com.mutualmobile.praxis.injection.module.NetworkModule
 import com.mutualmobile.praxis.injection.module.PreferenceModule
+import com.mutualmobile.praxis.injection.module.UseCaseModule
 import com.mutualmobile.praxis.injection.module.ViewModelFactoryModule
 import com.mutualmobile.praxis.injection.qualifiers.ApplicationContext
 import dagger.BindsInstance

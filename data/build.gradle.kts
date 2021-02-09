@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-
+  implementation(project(":domain"))
   /*Kotlin*/
   api(Lib.Kotlin.KT_STD)
   api(Lib.Async.COROUTINES)

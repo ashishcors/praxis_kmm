@@ -3,9 +3,9 @@ package com.mutualmobile.praxis.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.mutualmobile.praxis.data.SafeResult
-import com.mutualmobile.praxis.domain.model.Joke
-import com.mutualmobile.praxis.domain.usecases.GetFiveRandomJokesUseCase
+import com.example.domainn.entity.Joke
+import com.example.domainn.usecases.GetFiveRandomJokesUseCase
+import com.example.domainn.utils.SafeResult
 import com.mutualmobile.praxis.ui.base.BaseVM
 import kotlinx.coroutines.launch
 import timber.log.Timber
